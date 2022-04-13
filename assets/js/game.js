@@ -2,6 +2,7 @@
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 // You can also log multiple values at once like this
 console.log(playerName, playerAttack, playerHealth);
@@ -10,9 +11,12 @@ var enemyName = "Roborto";
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+//prompt the fight to see what happens:
+var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+
 // Create function named "fight"
 var fight = function() {
-    //intro
+  //intro
   window.alert("Welcome to Robot Gladiators!");
   //attack enemy health
   enemyHealth = enemyHealth - playerAttack;
@@ -35,5 +39,21 @@ var fight = function() {
     window.alert(enemyName + " still has " + enemyHealth + " health left.");
 }
 };
-//execute function:
-fight();
+
+switch(promptFight){
+    case "FIGHT":
+    case "fight":
+        fight();
+        break;
+    case "SKIP":
+    case "skip":
+        var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+        if(confirmSkip) {
+            window.alert(playerName + " has decided to skip this fight. Goodbye!");
+            // subtract money from playerMoney for skipping
+            playerMoney = playerMoney - 2;
+        }
+        else {
+            fight();
+        }
+}
