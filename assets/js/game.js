@@ -72,11 +72,25 @@ var fight = function(enemyName) {
 }; // end of fight function
 
 for (var i = 0; i < enemyNames.length; i++) {
+  //tell player what round your in
+  if (playerHealth > 0) {
+    window.alert("Welcome to Robot Gladiators!" + (i+1));
+  }
+  else {
+    window.alert("You have lost your robot in battle! Game Over!")
+  }
+  //pick new enemy based on index
   var pickedEnemyName = enemyNames[i];
+
+  //enemy health
   enemyHealth = 50;
+
+  //pass the pickedEnemyName var's value into the fight function!!
   fight(pickedEnemyName);
 }
  
+
+//test switch/case:
 // switch(promptFight){
 //     case "FIGHT":
 //     case "fight":
