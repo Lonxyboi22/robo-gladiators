@@ -15,6 +15,59 @@ var enemyAttack = 12;
 var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
 
+//shop function
+var shop = function(){
+
+    //ask player what they want to do!
+    var shopOptionPrompt = window.prompt (
+      "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+    );
+      switch (shopOptionPrompt) {
+      case "refill":
+      case "REFILL":
+        if (playerMoney >= 7) {
+          window.alert("Refilling player's health by 20 for 7 dollars.");
+      
+          // increase health and decrease money
+          playerHealth = playerHealth + 20;
+          playerMoney = playerMoney - 7;
+        }
+        else {
+          window.alert("You don't have enough money!");
+        }
+      
+        break;
+      case "upgrade":
+      case "UPGRADE":
+        if (playerMoney >= 7) {
+          window.alert("Upgrading player's attack by 6 for 7 dollars.");
+      
+         // increase attack and decrease money
+          playerAttack = playerAttack + 6;
+          playerMoney = playerMoney - 7;
+        }
+        else {
+          window.alert("You don't have enough money!");
+        }
+      
+        break;
+
+        case "leave":
+        case "LEAVE":
+          window.alert("Leaving the shop");
+
+          //nothing happens
+          break;
+        default:
+          window.alert("You did not pick a valid option. Try again..." + playerName);
+
+          //call shop function again to get player to pick a valid option:
+          shop();
+          break;
+      }
+
+}
+
 // Create function named "fight"
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
@@ -112,6 +165,17 @@ var startGame = function() {
       enemyHealth = 50;
 
       fight(pickedEnemyName);
+
+      //if there are more enemies go to shop!
+      if(playerHealth > 0 && i < enemyNames.length -1){
+        //ask player if they want to shop
+        var storeConfirm = window.confirm("The fight is over, would you like to visit the store?")
+        
+        //if yes then open store:
+        if(storeConfirm){
+          shop();
+        }
+      }
     }
     else {
       window.alert("You have lost your robot in battle! Game Over!");
