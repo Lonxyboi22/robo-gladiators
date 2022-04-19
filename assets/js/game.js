@@ -71,6 +71,30 @@ var fight = function(enemyName) {
   } // end of while loop
 }; // end of fight function
 
+//end game function
+var endGame = function() {
+  window.alert("The game has now ended. Let's see how you did!");
+//if player is still alive or not 
+  if (playerHealth > 0) {
+     window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
+  } 
+  else {
+      window.alert("You've lost your robot in battle.");
+  }
+
+//play again?
+var playAgainConfirm = window.confirm("Would you like to play again?");
+
+    if (playAgainConfirm) {
+      // restart the game
+      startGame();
+    } 
+    else {
+     window.alert("Thank you for playing Robot Gladiators! Come back soon!");
+    }
+};
+
+
 // function to start a new game
 var startGame = function() {
 
@@ -94,71 +118,9 @@ var startGame = function() {
       break;
     }
   }
-//play again?
 
-//startGame();
-
+//end the game
+    endGame();
 };
 
-
-//start game function:
 startGame();
-
-
-
-
-// for (var i = 0; i < enemyNames.length; i++) {
-//   //tell player what round your in
-//   if (playerHealth > 0) {
-//     window.alert("Welcome to Robot Gladiators! Round " + (i+1));
-//   }
-//   else {
-//     window.alert("You have lost your robot in battle! Game Over!")
-//   }
-//   //pick new enemy based on index
-//   var pickedEnemyName = enemyNames[i];
-
-//   //enemy health
-//   enemyHealth = 50;
-
-//   //pass the pickedEnemyName var's value into the fight function!!
-//   fight(pickedEnemyName);
-// }
- 
-
-//test switch/case:
-// switch(promptFight){
-//     case "FIGHT":
-//     case "fight":
-//       for (var i = 0; i < enemyNames.length; i++) {
-//         var pickedEnemyName = enemyNames[i];
-//         enemyHealth = 50;
-//         fight(pickedEnemyName);
-//       }
-//         break;
-//     case "SKIP":
-//     case "skip":
-//         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-//         if(confirmSkip) {
-//             window.alert(playerName + " has decided to skip this fight. Goodbye!");
-//             // subtract money from playerMoney for skipping
-//             playerMoney = playerMoney - 10;
-//             console.log("playerMoney", playerMoney)
-//         }
-//         else {
-//           for (var i = 0; i < enemyNames.length; i++) {
-//             var pickedEnemyName = enemyNames[i];
-//             enemyHealth = 50;
-//             fight(pickedEnemyName);
-//           }
-//         }
-//         break;
-//     default: 
-//     window.alert("You chose neither, Why sir? Why?");
-// }
-
-// Game States
-
-// "WIN" - Player robot has defeated all enemy-robots
-
-//    * Fight all enemy-robots
